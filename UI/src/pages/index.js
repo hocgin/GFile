@@ -1,7 +1,7 @@
 import styles from './index.less';
 import React from 'react';
 import { connect } from 'dva';
-import { Divider, List, Select } from 'antd';
+import { Divider, List, message, Select } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import DPlayer from 'react-dplayer';
 
@@ -25,7 +25,10 @@ class IndexLayout extends React.Component {
   player = null;
 
   componentDidMount() {
-
+    // 禁用 iOS 下拉回弹
+    document.ontouchmove = function(event) {
+      event.preventDefault();
+    };
   }
 
   render() {
@@ -34,7 +37,6 @@ class IndexLayout extends React.Component {
 
     return (
       <div className={styles.page}>
-        {/*<h1 className={styles.title}/>*/}
         <div className={styles.videoBox}>
           <DPlayer style={{ height: '100%' }}
                    video={{
@@ -90,7 +92,11 @@ class IndexLayout extends React.Component {
 
   // 加载更多
   onLoadMore = () => {
-    let { $page } = this.props;
+    let { $page, isLoading } = this.props;
+    if (isLoading) {
+      message.warn('正在加载中, 请稍后');
+      return;
+    }
     $page({
       payload: {
         size: 10,
@@ -101,6 +107,7 @@ class IndexLayout extends React.Component {
 
   // 播放
   onClickPlayAction = (item) => {
+    document.title = item.fileName;
     this.player.switchVideo({
       url: item.path,
     });
@@ -109,6 +116,7 @@ class IndexLayout extends React.Component {
 
   // 加载
   onClickLoadingAction = (item) => {
+    document.title = item.fileName;
     this.player.switchVideo({
       url: item.path,
     });
@@ -127,7 +135,7 @@ class IndexLayout extends React.Component {
       payload: {
         size: 10,
         page: page,
-        classify: v
+        classify: v,
       },
     });
   };

@@ -18,7 +18,7 @@ export default {
 
       let result = yield API.searchFile(payload);
       if (result.code === 200) {
-        let page = yield select((file) => file.page);
+        let page = yield select(({file}) => file.page);
         yield put({
           type: 'fillPage',
           payload: [...(page || []), ...(result.data || [])],
