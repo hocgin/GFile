@@ -1,0 +1,23 @@
+GET /files/_search
+
+```json
+{
+    code: 200,
+    message: "ok",
+    result: [{
+             "tags": [],
+             "typeOf": "video",
+             "source": "url",
+             "size": 142234405,
+             "fileName": "7-1 统计分析模块逐行消费日志.mp4",
+             "path": "http://127.0.0.1:8080/analysis/analysis?id=/Users/hocgin/Downloads/I/7-1+统计分析模块逐行消费日志.mp4",
+             "updatedAt": "2019-03-27T11:31:41+08:00"
+             }]
+}
+```
+
+GET /analysis/video?id={urlEncode(filePath)}
+
+```json
+// 文件流
+```

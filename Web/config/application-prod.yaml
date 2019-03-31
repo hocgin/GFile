@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  ip: 192.168.1.217
+template:
+  path: templates/
+  suffix: html
+static:
+  path: dist/
+file:
+  path:
+    百度网盘: /var/services/homes/hocgin/Baidu Cloud Sync
+    测试: /var/services/homes/hocgin/Test

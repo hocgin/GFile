@@ -1,0 +1,4 @@
+package: Web
+import:
+- package: github.com/spf13/viper
+  version: ~1.3.2
