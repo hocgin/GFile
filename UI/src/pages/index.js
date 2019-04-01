@@ -1,7 +1,7 @@
 import styles from './index.less';
 import React from 'react';
 import { connect } from 'dva';
-import { Divider, List, message, Select } from 'antd';
+import { Divider, List, message, Select, Tag } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import DPlayer from 'react-dplayer';
 
@@ -86,7 +86,7 @@ class IndexLayout extends React.Component {
     let action = actions[item.typeOf] || [defaultAction];
     return (<List.Item actions={[...action]}>
       <List.Item.Meta title={item.fileName}
-                      description={item.tags}/>
+                      description={(item.tags || []).map((item) => (<Tag>{item}</Tag>))}/>
     </List.Item>);
   };
 

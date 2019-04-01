@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  ip: 127.0.0.1
+template:
+  path: templates/
+  suffix: tpl
+static:
+  path: /Users/hocgin/Document/Projects/Demo/Files/dist
+file:
+  path:
+    test: /Users/hocgin/Downloads/I
+    tes2232t: /Users/hocgin/Document/Projects/Go/pkg/Web
